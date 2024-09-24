@@ -1,3 +1,10 @@
 $('#title').keyup(function() {
-    $('#slug').val($(this).val().toLowerCase().split(',').join('').replace(/\s/g,"-"));
+    var slug = $(this).val()
+    .toLowerCase()
+    .split(',')
+    .join('')
+    .replace(/[\s\\@#$%&*()_+={}\[\]:;"'<>?,./]/g, '-')
+    .replace(/--+/g, '-') 
+    .replace(/^-|-$/g, '');
+    $('#slug').val(slug);
 });
